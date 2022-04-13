@@ -8,14 +8,9 @@ $(document).ready(function () {
         const urlNext = $(this).attr('nextPageUrl');
         getPokemons(urlNext);
     });
-
-
-    $('.btnGetDataPokemon').on('click', function(){
-        window.location.href= "pokemon.html";
-        
-     });
-     
-
+    console.log('hola')
+    
+    
 });
 
 const getPokemons = (url) => {
@@ -25,21 +20,24 @@ const getPokemons = (url) => {
     .then((data) => {
         const pokemons = data.results;
         const urlMorePokemons = data.next;
-        
+
         $('#getMorePokemons').attr('nextPageUrl', urlMorePokemons);
         pokemons.forEach(function (pokemon) {
             showPokemon(pokemon);
         });
-        
+
         $('.btnGetDataPokemon').click(function () {
             const urlPokemon = $(this).attr('data-url-pokemon');
             getPokemonData(urlPokemon);
         });
+        
+      
     });
     
 };
 
 const getPhoto = (url, name) => {
+    console.log('obteniendo fotos ' + url)
     fetch(url)
         .then((response) => response.json())
         .then((data) => {
@@ -48,37 +46,31 @@ const getPhoto = (url, name) => {
 }
 
 const getPokemonData = (url) => {
+    console.log('obteniendo datos desde' + url);
 
     fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            $('#pokemonData').text(data.name);
+            $('#modalPokemonLabel').text(data.name);
+
+            console.log("PokemonData", data);
 
             $('#pokemonAbilities').text('');
-            $('#pokemonWeight').text('');
             $('#pokemonMoves').text('');
-            $('#pokemonBaseExperience').text('');
 
+    
             data.abilities.forEach(function (ability) {
-                $('#pokemonAbilities').append(`<li>${ability.ability.name} </li>`);
+                $('#pokemonAbilities').append(`<li>${ability.ability.name}</li>`);
             });
+        
+            $('#pokemonMoves').append(`<li>${data.moves[0].move.name}</li>`);
+         
 
-            data.weight.forEach(function (weight) {
-                $('#pokemonAbilities').append(`<li>${weight.value} </li>`);
-            });
-
-            $('.btnOtherPokemons').click(function () {
-                const urlOtherPokemons = $(this).attr('data-url-other-pokemons');
-                getOtherPokemons(urlOtherPokemons);
-            });
-
-            for (let i = 0; i < 5; i++) {
-                $('#pokemonMoves').append(`<li>${data.moves[i].move.name}</li>`);
-            };
-
+            $("#modalPokemon").modal("show");
         });
 
 }
+
 
 const showPokemon = (pokemon) => {
 
@@ -95,8 +87,8 @@ const showPokemon = (pokemon) => {
                             <li> "Weight : ${pokemon.name.height}" </li>
                             <li> "Ability : ${pokemon.name.ability}" </li>
                         </ul>   
-                        <a href = "pokemon.html" data-url-pokemon =' ${pokemon.url}'>
-                            <button class ="btn btn-primary btnGetDataPokemon" >¡mas info!</button> 
+                        <a href = "pokemon.html" class = "btnGetDataPokemon" >
+                            <button class ="btn btn-primary " >¡mas info!</button> 
                         </a>
                     </div>
                 </div>
@@ -110,19 +102,12 @@ const showPokemonData = (pokemon) => {
 
     $('#pokemonData').append(`
         
-                    <h4 class='card-title'>${pokemon.name}</h4>
-                    <div class = "">
-                        <img src="" id="img_${pokemon.name}" class = "img-card">
-                    </div>
-                    <div class = "">
-                        <ul>
-                            <li> "Weight : ${pokemon.name.weight}" </li>
-                            <li> "Ability : ${pokemon.name.ability}" </li>
-                        </ul>   
-                    </div>
-
+    <div>
+        <img id = "img_${pokemon.name}" class = "w-100">
+    </div>
     
            
     `);
     getPhoto(pokemon.url, pokemon.name);
+    
 }
