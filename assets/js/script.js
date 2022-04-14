@@ -60,19 +60,33 @@ const getPokemonData = (url) => {
 
 const showPokemon = (pokemon) => {
     $('#pokedex').append(`
-                <div class='card card_${pokemon.name} col-6 m-5'>
-                    <div class="header"><h5 class='card-title'>${pokemon.name}</h5></div>
-                        <div class='card-body'>
-                            <div class = "div-img-card div_${pokemon.name}">
-                                <img src="" id="img_${pokemon.name}" class = "img-card">
-                            </div>
-                            <div >
-                                <ul id = "pokemonAbilitiesCard_${pokemon.name}" ></ul>
-                                <ul id = "pokemonWeightCard_${pokemon.name}" ></ul>
-                            </div>
-                        </div>
-                    <button type="button"  class ="btn btn-primary btnGetDataPokemon" data-toggle="modal" data-target="#modalPokemon" data-url-pokemon = "${pokemon.url}">Quiero saber más de </button>
+        <div class='card card_${pokemon.name} col-6 m-5'>
+            <div class='card-body'>
+                <h5 class='card-title'>${pokemon.name}</h5>
+                <div class = "div-img-card div_${pokemon.name}">
+                    <img src="" id="img_${pokemon.name}" class = "img-card">
                 </div>
+                <table class = "table table-sm table-card-data card-data">
+                    <thead class = 'thead-dark '>
+                        <tr>
+                            <th>Habilidad</th>
+                            <th>Peso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id = "pokemonAbilitiesCard_${pokemon.name}" class = "card-data" ></td>
+                            <td id = "pokemonWeightCard_${pokemon.name}" class = "card-data" ></td>
+                        </tr>
+                    </body>    
+                </table>
+            </div>
+            <div class ="d-flex justify-content-center">
+                <button type="button"  class ="btn btnGetDataPokemon" data-toggle="modal" data-target="#modalPokemon" data-url-pokemon = "${pokemon.url}">Quiero saber más de </button>
+            </div>
+        
+            
+        </div>
     `)
 
     getPhoto(pokemon.url, pokemon.name)
@@ -84,9 +98,9 @@ const cardInfo = (url, name) => {
     fetch(url)
     .then((response) => response.json())
     .then((data) => {
-        $(`#pokemonAbilitiesCard_${name}`).append(`<li>Habilidad: ${data.abilities[0].ability.name}</li>`);
-        $(`#pokemonWeightCard_${name}`).append(`<li> Peso: ${data.weight}</li>`);
-        $(`.card_${name}`).append(`<h5>${data.id}</h5>`)
+        $(`#pokemonAbilitiesCard_${name}`).append(data.abilities[0].ability.name);
+        $(`#pokemonWeightCard_${name}`).append( `${data.weight} lbs`);
+        
         const typeColor = (type, colorCard, colorDiv) =>{
             if(data.types[0].type.name === type){
                 $(`.card_${name}`).css('background-color', colorCard)
