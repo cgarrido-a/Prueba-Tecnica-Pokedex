@@ -63,7 +63,7 @@ const showPokemon = (pokemon) => {
                 <div class='card card_${pokemon.name} col-6 m-5'>
                     <div class="header"><h5 class='card-title'>${pokemon.name}</h5></div>
                         <div class='card-body'>
-                            <div class = "div-img-card ">
+                            <div class = "div-img-card div_${pokemon.name}">
                                 <img src="" id="img_${pokemon.name}" class = "img-card">
                             </div>
                             <div >
@@ -86,10 +86,34 @@ const cardInfo = (url, name) => {
     .then((data) => {
         $(`#pokemonAbilitiesCard_${name}`).append(`<li>Habilidad: ${data.abilities[0].ability.name}</li>`);
         $(`#pokemonWeightCard_${name}`).append(`<li> Peso: ${data.weight}</li>`);
-
-        console.log(data.types[0].type.name)
-        if(data.types[0].type.name === 'grass' || data.types[0].type.name === 'bug' ){
-            $(`.card_${name}`).css('background-color', 'green')
+        $(`.card_${name}`).append(`<h5>${data.id}</h5>`)
+        const typeColor = (type, colorCard, colorDiv) =>{
+            if(data.types[0].type.name === type){
+                $(`.card_${name}`).css('background-color', colorCard)
+                $(`.div_${name}`).css('background-color', colorDiv)
+            }
         }
+        typeColor('grass', '#47A737', '#88B881')
+        typeColor('bug', '#47A737', '#88B881')
+        typeColor('fire', '#DE5F2C', '#E58158')
+        typeColor('water', '#464FD6', '#6F76E5')
+        typeColor('ice', '#464FD6', '#6F76E5')
+        typeColor('normal', '#D4A97C', '#FFE1C0')
+        typeColor('flying', '#D4A97C', '#FFE1C0')
+        typeColor('ground',  '#B87A25', '#DABD97')
+        typeColor('rock',  '#B87A25', '#DABD97')
+        typeColor('fighting', '#B87A25', '#DABD97')
+        typeColor('steel', '5D5D5C', '#CA6AE1')
+        typeColor('dark', '#181108', '#949391')
+        typeColor('dragon', 'A28E12', 'A59E6F')
+        typeColor('fairy','#C63F83', '#CF8BAD')
+        typeColor('shadow', '', '')
+        typeColor('poison', '#B528D8', '#CA6AE1')
+        typeColor('psychic', '#B528D8', '#CA6AE1')
+        typeColor('ghost', '#B528D8', '#CA6AE1')
+        typeColor('electric', '#DCBE01', '#E5D468')
+        console.log(data.types[0].type.name)
+       
+      
     });
 }
