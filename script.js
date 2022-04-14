@@ -35,7 +35,7 @@ const getPokemons = (url) => {
 
             pokemons.forEach(function (pokemon) {
                 showPokemon(pokemon);
-            });            
+            });   
       
             $('.btnGetDataPokemon').click(function () {
                 console.log('probando boton')
@@ -74,7 +74,8 @@ const getPokemonData = (url) => {
 
 
 const showPokemon = (pokemon) => {
-  
+
+
     $('#pokedex').append(`
                 <div class='card col-6'>
                     <div class='card-body'>
@@ -84,8 +85,8 @@ const showPokemon = (pokemon) => {
                             <button type="button"  class ="btn btn-primary btnGetDataPokemon" data-toggle="modal" data-target="#modalPokemon" data-url-pokemon = "${pokemon.url}">Quiero saber más de </button>
                         </div>
                         <div class = "d-inline-block">
-                            <ul id = "pokemonAbilitiesCard" class = "${pokemon.name}"></ul>
-                            <ul id = "pokemonWeightCard" class = "${pokemon.name}"></ul>
+                            <ul id = "pokemonAbilitiesCard_${pokemon.name}" ></ul>
+                            <ul id = "pokemonWeightCard_${pokemon.name}" ></ul>
                         </div>
                        
                  
@@ -95,23 +96,18 @@ const showPokemon = (pokemon) => {
 
 
     getPhoto(pokemon.url, pokemon.name)
-    cardInfo(pokemon.url)
+    cardInfo(pokemon.url, pokemon.name)
 }
 
-const cardInfo = (url) => {
+const cardInfo = (url, name) => {
 
     fetch(url)
     .then((response) => response.json())
     .then((data) => {
-            
-   
-    
-
-           
-        $('#pokemonAbilitiesCard').append(`<li>${data.abilities[0].ability.name}</li>`);
+        $(`#pokemonAbilitiesCard_${name}`).append(`<li>Habilidad: ${data.abilities[0].ability.name}</li>`);
    
   
-        $('#pokemonWeightCard').append(`<li>${data.weight}</li>`);
+        $(`#pokemonWeightCard_${name}`).append(`<li> Peso: ${data.weight}</li>`);
 
     });
     
