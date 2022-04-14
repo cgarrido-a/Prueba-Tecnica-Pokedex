@@ -66,7 +66,7 @@ const getPokemonData = (url) => {
 
 const showPokemon = (pokemon) => {
     $('#pokedex').append(`
-        <div class='card card_${pokemon.name} col-6 m-5'>
+        <div class='card card_${pokemon.name} col-xs col-md-6 m-5'>
             <div class='card-body'>
                 <h5 class='card-title'>${pokemon.name}</h5>
                 <div class = "div-img-card div_${pokemon.name}">
