@@ -29,17 +29,33 @@
         <div class="modal fade" id="modalPokemon" tabindex="-1" role="dialog" aria-labelledby="modalPokemonLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
-              <div class="modal-header">
+              <div class="modal-body">
                 <h5 class="modal-title" id="modalPokemonLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
-              </div>
-              <div class="modal-body">
-                  <p>Peso: <ul id="pokemonWeight"></ul> </p>
-                  <p>Base Experience: <ul id="pokemonBaseExperience"></ul> </p>
-                  <p>Habilidad: <ul id="pokemonAbilities"></ul> </p>
-                  <p>Movimiento: <ul id="pokemonMoves"></ul> </p>
+                <div id="img-modal"></div>
+                <div id="div-tabla-modal">
+                  <table class="table table-sm table-borderless table-modal ">
+                    <tbody>
+                      <tr>
+                        <td scope="col">Peso</td>
+                        <td scope="col" id="pokemonWeight"></td>
+                      </tr>
+                      <tr>
+                        <td scope="col">Habilidad</td>
+                        <td scope="col" id="pokemonAbilities"></td>
+                      </tr>
+                      <tr>
+                        <td scope="col">Experiencia Base</td>
+                        <td scope="col" id="pokemonBaseExperience"></td>
+                      </tr>
+                      <tr>
+                        <td scope="col">Movimiento</td>
+                        <td scope="col"id="pokemonMoves"></td>
+                      </tr>
+                    </tbody>
+                </div> 
               </div>
             </div>
           </div>

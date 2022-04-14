@@ -15,6 +15,7 @@ const getPhoto = (url, name) => {
         .then((response) => response.json())
         .then((data) => {
             $(`#img_${name}`).attr("src", data.sprites.other.dream_world.front_default);
+            $(`#img_modal_${name}`).attr("src", data.sprites.other.dream_world.front_default);
         });
 }
 
@@ -48,14 +49,19 @@ const getPokemonData = (url) => {
             $('#pokemonMoves').text('');
             $('#pokemonWeight').text('');
             $('#pokemonBaseExperience').text('');
-               
-            $('#pokemonAbilities').append(`<li>${data.abilities[0].ability.name}</li>`);
-            $('#pokemonMoves').append(`<li>${data.moves[0].move.name}</li>`);
-            $('#pokemonWeight').append(`<li>${data.weight}</li>`);
-            $('#pokemonBaseExperience').append(`<li>${data.base_experience}</li>`);
+            $('#img-modal').text('')
+          
+            $('#pokemonAbilities').append(data.abilities[0].ability.name);
+            $('#pokemonMoves').append(data.moves[0].move.name);
+            $('#pokemonWeight').append(data.weight);
+            $('#pokemonBaseExperience').append(data.base_experience);
+
+            $('#img-modal').append(` <img src = "" id="img_modal_${data.name}" class = "img-card">`)
 
             $("#modalPokemon").modal('show');
+            getPhoto(url, data.name)
         });
+  
 }
 
 const showPokemon = (pokemon) => {
@@ -82,7 +88,7 @@ const showPokemon = (pokemon) => {
                 </table>
             </div>
             <div class ="d-flex justify-content-center">
-                <button type="button"  class ="btn btnGetDataPokemon" data-toggle="modal" data-target="#modalPokemon" data-url-pokemon = "${pokemon.url}">Quiero saber más de </button>
+                <button type="button"  class ="btn btnGetDataPokemon" data-url-pokemon = "${pokemon.url}">Quiero saber más de </button>
             </div>
         
             
@@ -125,9 +131,6 @@ const cardInfo = (url, name) => {
         typeColor('poison', '#B528D8', '#CA6AE1')
         typeColor('psychic', '#B528D8', '#CA6AE1')
         typeColor('ghost', '#B528D8', '#CA6AE1')
-        typeColor('electric', '#DCBE01', '#E5D468')
-        console.log(data.types[0].type.name)
-       
-      
+        typeColor('electric', '#DCBE01', '#E5D468') 
     });
 }
