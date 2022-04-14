@@ -9,7 +9,7 @@ body{
 }
 
 h1{
-    font-family: 'Pokemon Solid', sans-serif;
+    font-family: 'Pokemon Solid','Quicksand', sans-serif;
     font-size: 7em;
     margin: 3rem auto 1rem auto;
     -webkit-text-stroke: 6px rgb(32, 12, 214);
@@ -17,7 +17,6 @@ h1{
     text-shadow: 2px 4px 2px #000000;
     
 }
-
 
 
 /* CARDS STYLE */
@@ -61,6 +60,10 @@ h1{
 .table-card-data{
     margin-top: 1em;
     border: 3px solid black;
+}
+
+.tbody-cards{
+    background-color: rgb(161, 154, 158);
 }
 
 .btnGetDataPokemon{

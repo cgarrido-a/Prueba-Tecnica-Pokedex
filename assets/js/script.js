@@ -79,7 +79,7 @@ const showPokemon = (pokemon) => {
                             <th>Peso</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class = "tbody-cards">
                         <tr>
                             <td id = "pokemonAbilitiesCard_${pokemon.name}" class = "card-data" ></td>
                             <td id = "pokemonWeightCard_${pokemon.name}" class = "card-data" ></td>
@@ -123,11 +123,11 @@ const cardInfo = (url, name) => {
         typeColor('ground',  '#B87A25', '#DABD97')
         typeColor('rock',  '#B87A25', '#DABD97')
         typeColor('fighting', '#B87A25', '#DABD97')
-        typeColor('steel', '5D5D5C', '#CA6AE1')
-        typeColor('dark', '#181108', '#949391')
-        typeColor('dragon', 'A28E12', 'A59E6F')
+        typeColor('steel', '#757574', '#D1CAC2')
+        typeColor('dark', '#55514D', '#949391')
+        typeColor('dragon', '#A28E12', '#A59E6F')
         typeColor('fairy','#C63F83', '#CF8BAD')
-        typeColor('shadow', '', '')
+        typeColor('shadow', '#55514D', '#949391')
         typeColor('poison', '#B528D8', '#CA6AE1')
         typeColor('psychic', '#B528D8', '#CA6AE1')
         typeColor('ghost', '#B528D8', '#CA6AE1')
