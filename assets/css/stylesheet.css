@@ -88,6 +88,7 @@ h1{
     background-image: url('/assets/images/pokedexcerrada.jpg');
     background-size: cover;
     min-height: 90vh;
+    
 }
 
 .table-modal{
@@ -110,7 +111,11 @@ h5{
 
 #img-modal{
     width: 70%;
-    margin-top: 30%;
+    margin: 40% auto 0 auto;
     display: flex;
     justify-content: center;
+    background-color: rgb(104, 102, 207);
+    border-radius: 20px;
+
 }
+
