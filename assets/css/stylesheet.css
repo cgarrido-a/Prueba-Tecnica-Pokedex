@@ -5,17 +5,20 @@
 }
 
 body{
-    background-image: url('/assets/images/background.jpg');
-    background-size: cover;
+    background-image: linear-gradient(to right top, #051937, #00466e, #007aa0, #00b2c7, #12ebe1);
 }
 
 h1{
     font-family: 'Pokemon Solid', sans-serif;
-    font-size: 5em;
-    margin: 3rem auto;
-    -webkit-text-stroke: 4px rgb(32, 12, 214);
+    font-size: 7em;
+    margin: 3rem auto 1rem auto;
+    -webkit-text-stroke: 6px rgb(32, 12, 214);
     color: rgb(221, 175, 23);
+    text-shadow: 2px 4px 2px #000000;
+    
 }
+
+
 
 /* CARDS STYLE */
 
@@ -96,7 +99,7 @@ h1{
     font-size: 1rem;
     text-transform: capitalize;
     border-radius: 20px;
-    background-color: rgb(93, 91, 219);
+    background-color: rgb(167, 152, 152);
 }
 
 #div-tabla-modal{
@@ -111,11 +114,19 @@ h5{
 
 #img-modal{
     width: 70%;
+    max-height: 300px;
     margin: 40% auto 0 auto;
+    padding: 2em;
     display: flex;
     justify-content: center;
     background-color: rgb(104, 102, 207);
     border-radius: 20px;
+    border: 1em solid rgb(167, 152, 152);
+    box-shadow: 6px 4px 4px #313131;
 
+}
+
+.img-modal{
+    width: 80%;
 }
 

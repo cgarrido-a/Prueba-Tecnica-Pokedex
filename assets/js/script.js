@@ -56,7 +56,7 @@ const getPokemonData = (url) => {
             $('#pokemonWeight').append(data.weight);
             $('#pokemonBaseExperience').append(data.base_experience);
 
-            $('#img-modal').append(` <img src = "" id="img_modal_${data.name}" class = "img-card">`)
+            $('#img-modal').append(` <img src = "" id="img_modal_${data.name}" class = "img-modal">`)
 
             $("#modalPokemon").modal('show');
             getPhoto(url, data.name)
